@@ -1,0 +1,70 @@
+기능
+
+
+Entity 클래스 생성
+
+    Table 목록 자동 조회
+    Column Name, Column Type 자동조회 후 알맞게 자동 생성
+
+    //todo 등록되지 않은 type -> 직접 작성
+
+Dao 클래스 생성
+
+    기본 services 자동 구현
+
+        int getCount();
+        ArrayList<Entity> getAll();
+        int insert(); or boolena insert();
+            return (identity != null)? identity : boolean ; 자동증가값이 있으면 자동증가값을 반환, 없으면 불린반환
+        boolean update();
+        Entity getByKey(int key);
+        boolean deleteByKey(int key);
+        (Name 컬럼 존제시)
+            int getIdByName(String name);
+
+    Dao 개발 Methods 구현
+            (ParameterSetter -> 인터페이스)
+
+        Entity readEntity(ResultSet result);
+        Entity getOne(String query, ParameterSetter p);
+        Arraylist<Entity> getMany(String query, ParameterSetter p);
+        int getInt(String query, ParameterSetter p);
+        boolean execute(String query, ParameterSetter p)
+
+    //todo 필요한 서비스 구현
+
+Load 클래스 생성
+
+    TxtLoad, JsonLoad 두가지 모두 생성
+
+    refine 함수 제공
+        문자열 내의 "," 치환(split 구분 문자열이기 때문에) String replaceCommaInQuotes(String string, String replaceString)
+        특정 문자열 사이의 내용 제거 String partialDelection(String string, String startString, String endString)
+
+    runnable 함수 자동 적용(interface 로 구현해놓음)
+
+        사용 원치 않을 시 etl(Object obj)함수 재구현
+            @Override
+            protected void etl(Object object){
+                loading(object);
+            }
+
+    Load Table, Code Table 은 적제 전에 불러옴 (for  insert 조건 확인)
+            * 적제 전에 전부 불러오는 이유 : insert 시 마다 query 날려서 비교하는것 보다 경제적
+
+        각각 ArrayList<Entity> tableNames, ArrayList<Code> codes
+
+    //todo Entity와 읽어온 데이터 매칭
+
+        identity 유무에 따른 PrimaryKey 처리 제공
+        Code 컬럼일 경우 매칭 제공
+        형변환 제공
+
+    //todo SetEntity 로 Insert 조건 정의
+
+        * 기존 데이터와 비교시 Identity PrimaryKey 값은 비교가 불가능하니
+        Equals, HashCode 함수 를 재 정의해서 사용(Entity 클래스에 정의하세요)
+
+    예외 발생시 파일에 저장
+
+

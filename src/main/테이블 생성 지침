@@ -1,0 +1,25 @@
+File -> Setting -> Plugins ->(검색) lombok 인스톨 해주세요. (코드 간결화, Exception 처리 치트키)
+
+DB 생성 지침
+
+1, Code, CodeCategory Table 생성
+    Code
+        CodeId
+        CodeName
+        CodeCategoryId
+
+    CodeCategory
+        CodeCategoryId
+        CodeCategoryName
+
+2, 컬럼 이름
+    Code 테이블과 매칭되는 컬럼 '%Code'
+    PK성격의 String 컬럼 '%Name'
+    Primary_Key 컬럼 '%Id'
+    
+    다른 컬럼에 지정 단어 사용 금지
+    
+3, Primary_Key
+    int 값
+    1개 (중복은 코드라인에서 컨트롤)
+

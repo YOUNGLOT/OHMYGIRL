@@ -1,0 +1,11 @@
+MSSQL 사용  :  대소문자 구별, 미숙련자가 사용하기 적합
+
+LOMBOK 사용 :  코드간결화
+
+region 사용 : (region 왼쪽에서 접을수 있음) 접으면 예뻐짐
+//region
+Codes....
+//endregion
+
+
+
